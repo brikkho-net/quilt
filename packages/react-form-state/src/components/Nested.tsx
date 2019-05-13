@@ -23,7 +23,10 @@ export default class Nested<Fields> extends React.PureComponent<
     const innerFields: FieldDescriptors<Fields> = mapObject(
       value,
       (value, fieldPath) => {
-        const initialFieldValue = initialValue[fieldPath];
+        let initialFieldValue: any;
+        if (initialValue) {
+          initialFieldValue = initialValue[fieldPath];
+        }
         return {
           value,
           onBlur,
